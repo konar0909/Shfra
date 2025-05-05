@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع التشفير البسيط</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>موقع التشفير البسيط</h1>
+
+        <div class="section">
+            <h3>أدخل النص لتحويله إلى شفرة:</h3>
+            <textarea id="inputText" rows="4" placeholder="اكتب هنا..."></textarea><br>
+            <button onclick="encodeText()">تشفير النص</button>
+        </div>
+
+        <div class="section">
+            <h3>النص المشفر:</h3>
+            <textarea id="encodedText" rows="4" readonly></textarea><br>
+            <button onclick="decodeText()">فك الشفرة</button>
+        </div>
+
+        <div class="section">
+            <h3>النص المفكوك:</h3>
+            <textarea id="decodedText" rows="4" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function encodeText() {
+            var input = document.getElementById("inputText").value;
+            var encoded = "";
+            for (var i = 0; i < input.length; i++) {
+                encoded += String.fromCharCode(input.charCodeAt(i) + 5); // نقل كل حرف 5 مرات
+            }
+            document.getElementById("encodedText").value = encoded;
+        }
+
+        function decodeText() {
+            var encoded = document.getElementById("encodedText").value;
+            var decoded = "";
+            for (var i = 0; i < encoded.length; i++) {
+                decoded += String.fromCharCode(encoded.charCodeAt(i) - 5); // عكس التشفير
+            }
+            document.getElementById("decodedText").value = decoded;
+        }
+    </script>
+
+</body>
+</html>
